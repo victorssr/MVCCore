@@ -35,6 +35,7 @@ namespace VSDev.MVC
 
             app.UseMvc(routes =>
             {
+                routes.MapAreaRoute("AdminArea", "Admin", "Admin/{controller=Artigo}/{action=Index}/{id?}");
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
