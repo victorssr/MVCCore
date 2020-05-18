@@ -5,6 +5,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using VSDev.MVC.Services.Interface;
 using VSDev.MVC.Services;
+using VSDev.MVC.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace VSDev.MVC
 {
@@ -12,13 +15,24 @@ namespace VSDev.MVC
     {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
+        public IConfiguration Configuration { get; set; }
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ContextBase>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("VSDevDB"))
+            );
+
             services.AddMvc(options =>
             {
                 options.EnableEndpointRouting = false;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
 
             services.AddTransient<IArtigoRepository, ArtigoRepository>();
         }
