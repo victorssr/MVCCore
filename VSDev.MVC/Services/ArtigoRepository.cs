@@ -9,7 +9,7 @@ namespace VSDev.MVC.Services
         {
             return new Artigo
             {
-                IdArtigo = 1,
+                Id = 1,
                 Titulo = "Artigo para Testes"
             };
         }

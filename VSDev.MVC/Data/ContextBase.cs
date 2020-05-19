@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VSDev.MVC.Models;
 
 namespace VSDev.MVC.Data
 {
@@ -9,5 +10,7 @@ namespace VSDev.MVC.Data
         {
 
         }
+
+        public DbSet<Artigo> Artigos { get; set; }
     }
 }
