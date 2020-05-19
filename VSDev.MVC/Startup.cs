@@ -8,6 +8,7 @@ using VSDev.MVC.Services;
 using VSDev.MVC.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace VSDev.MVC
 {
@@ -25,9 +26,10 @@ namespace VSDev.MVC
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ContextBase>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("VSDevDB"))
-            );
+            services.AddDbContext<ContextBase>(options => options.UseSqlServer(Configuration.GetConnectionString("VSDevDB")));
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<ContextBase>();
 
             services.AddMvc(options =>
             {
@@ -46,6 +48,8 @@ namespace VSDev.MVC
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
