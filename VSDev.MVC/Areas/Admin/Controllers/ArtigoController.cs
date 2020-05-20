@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using VSDev.MVC.Extensions;
 using VSDev.MVC.Services.Interface;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -21,6 +22,7 @@ namespace VSDev.MVC.Areas.Admin.Controllers
             _artigoRepository = artigoRepository;
         }
 
+        [CustomAuthorization("Artigo", "Index")]
         // GET: /<controller>/
         public IActionResult Index()
         {
