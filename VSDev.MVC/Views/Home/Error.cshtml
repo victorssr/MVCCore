@@ -1,0 +1,12 @@
+﻿@model VSDev.MVC.Models.ErrorViewModel
+
+@if (Model == null)
+{
+    <h4 class="text-danger">Ops! Ocorreu um problema</h4>
+    <h5>Entre em contato com o nosso suporte.</h5>
+}
+else
+{
+    <h4 class="text-danger">@Model.Titulo</h4>
+    <h5>@Model.Descricao</h5>
+}

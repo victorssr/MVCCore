@@ -31,9 +31,14 @@ namespace VSDev.MVC
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment() || env.IsStaging())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Erro/500");
+                app.UseStatusCodePagesWithRedirects("/Erro/{0}");
             }
 
             app.UseStaticFiles();
