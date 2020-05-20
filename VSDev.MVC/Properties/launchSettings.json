@@ -22,6 +22,13 @@
         "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
+    "STAGING - IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      }
+    },
     "VSDev.MVC": {
       "commandName": "Project",
       "launchBrowser": true,

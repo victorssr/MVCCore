@@ -21,6 +21,13 @@ namespace VSDev.MVC
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureAppConfiguration((hostContext, builder) =>
+                {
+                    if (hostContext.HostingEnvironment.IsStaging())
+                    {
+                        builder.AddUserSecrets<Program>();
+                    }
                 });
     }
 }
