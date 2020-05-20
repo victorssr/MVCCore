@@ -32,6 +32,12 @@ namespace VSDev.MVC
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ContextBase>();
 
+            services.AddAuthorization(options =>
+            {
+                // AUTHORIZATION WITH POLICY
+                options.AddPolicy("PodeExcluir", policy => policy.RequireClaim("PodeExcluir"));
+            });
+
             services.AddMvc(options =>
             {
                 options.EnableEndpointRouting = false;

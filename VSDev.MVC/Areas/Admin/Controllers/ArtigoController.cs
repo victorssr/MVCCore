@@ -22,8 +22,8 @@ namespace VSDev.MVC.Areas.Admin.Controllers
             _artigoRepository = artigoRepository;
         }
 
+        // CUSTOM AUTHORIZATION WITH ROLE CLAIMS
         [CustomAuthorization("Artigo", "Index")]
-        // GET: /<controller>/
         public IActionResult Index()
         {
             var artigo = _artigoRepository.ArtigoEmBranco();
@@ -31,8 +31,16 @@ namespace VSDev.MVC.Areas.Admin.Controllers
             return View(artigo);
         }
 
+        // AUTHORIZATION WITH ROLES
         [Authorize(Roles = "Admin")]
         public IActionResult Novo()
+        {
+            return View();
+        }
+
+        // AUTHORIZATION WITH POLICY CLAIMS
+        [Authorize(Policy = "PodeExcluir")]
+        public IActionResult Excluir()
         {
             return View();
         }
