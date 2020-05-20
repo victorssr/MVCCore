@@ -1,1 +1,15 @@
-﻿Olá!
+﻿@using VSDev.MVC.Extensions
+
+Olá!
+
+
+@if (this.IfClaim("PodeExcluir", "PodeExcluir"))
+{
+    <p>Você pode excluir</p>
+}
+
+@Html.ActionLink("Você pode excluir", "Excluir", "Artigo").IfClaimShow(Context, "PodeExcluir", "PodeExcluir")
+
+<br />
+<br />
+<a href="#" class="btn btn-danger @Html.Raw(this.IfClaimShow("PodeExcluir", "PodeExcluir"))">Clique para excluir</a>
