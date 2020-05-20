@@ -9,4 +9,4 @@ Aplicação: ASP.NET MVC Core
 
 Linguagem: C#
 
-Conteúdos: Padrão MVC (Model, View e Controller), Areas, Injeção de Dependência, Entity Framework Core, Migrations, ASP.NET Identity e contruções completas de aplicações MVC Core.
+Conteúdos: Padrão MVC (Model, View e Controller), Areas, Injeção de Dependência, Entity Framework Core, Migrations, ASP.NET Identity, User Secrets, Environments, Identity Authorization e Exception Handlers.
