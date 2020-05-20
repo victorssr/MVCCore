@@ -30,5 +30,12 @@ namespace VSDev.MVC.Areas.Admin.Controllers
 
             return View(artigo);
         }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult Novo()
+        {
+            return View();
+        }
+
     }
 }

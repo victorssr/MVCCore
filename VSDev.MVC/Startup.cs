@@ -28,7 +28,8 @@ namespace VSDev.MVC
         {
             services.AddDbContext<ContextBase>(options => options.UseSqlServer(Configuration.GetConnectionString("VSDevDB")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>()
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ContextBase>();
 
             services.AddMvc(options =>
